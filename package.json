@@ -1,7 +1,7 @@
 {
   "name": "htmlcoin-explorer",
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the HTMLCOIN network and build your own services with it.",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "repository": "https://github.com/HTMLCOIN/htmlcoin-explorer.git",
   "contributors": [],
   "bugs": {
