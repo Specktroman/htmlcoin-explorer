@@ -1,24 +1,24 @@
 <div class="transactions__head">
 	<div class="transactions__headLeft">
-		<a href="" 
-		   class="transactions__moreBtn js-block-more" 		
+		<a href=""
+		   class="transactions__moreBtn js-block-more"
 		   ng-click="tx.showAdditInfo = !tx.showAdditInfo">
 			<span class="icon-plus"></span>
 			<span class="icon-minus"></span>
 		</a>
 		<div class=" copyParent copyParent-right">
-			<a href="" 
+			<a href=""
 			   class="copyBtn icon-copy"
-			   ngclipboard 
+			   ngclipboard
 			   data-clipboard-text="{{ tx.txid }}">
 			</a>
-			
-			<a href="tx/{{ tx.txid }}" 
-			   ng-if="!TC.tx" 
+
+			<a href="tx/{{ tx.txid }}"
+			   ng-if="!TC.tx"
 			   class="copyText mark">
 				{{ tx.txid }}
 			</a>
-			<span ng-if="TC.tx" 
+			<span ng-if="TC.tx"
 				  class="copyText">
 				{{ tx.txid }}
 			</span>
@@ -26,7 +26,7 @@
 	</div>
 	<div class="transactions__headRight">
 		<div class="date" ng-if="tx.blocktime">
-			<span translate>mined</span> 
+			<span translate>mined</span>
 			{{ tx.blocktime * 1000 | amDateFormat: 'MMMM D, YYYY h:mm:ss A' }}
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 			<div ng-repeat="vin in tx.vinSimple" ng-if="vin.addr">
 				<div ng-repeat="item in vin.items | limitTo : !tx.showAdditInfo ? 1 : vin.items.length">
 					<div class="transactions__row">
-						<a href="address/{{ vin.addr }}" 
+						<a href="address/{{ vin.addr }}"
 						class="name mark"
 						ng-if="$root.currentAddr != vin.addr || tx.showAdditInfo">
 							<span class="name__text">
@@ -50,20 +50,20 @@
 
 						<!-- errors -->
 
-						<div ng-if="vin.unconfirmedInput" class="text-danger"> 
-							<span class="glyphicon glyphicon-warning-sign"></span> 
+						<div ng-if="vin.unconfirmedInput" class="text-danger">
+							<span class="glyphicon glyphicon-warning-sign"></span>
 							({{ 'Input unconfirmed' | translate }})
 						</div>
 
 						<div ng-if="vin.dbError" class="text-danger">
-							<span class="glyphicon glyphicon-warning-sign"></span> 
-							<span translate>Incoherence in levelDB detected:</span> 
+							<span class="glyphicon glyphicon-warning-sign"></span>
+							<span translate>Incoherence in levelDB detected:</span>
 							{{ vin.dbError }}
 						</div>
 
-						<div ng-if="vin.doubleSpentTxID" class="text-danger"> 
-							<span class="glyphicon glyphicon-warning-sign"></span> 
-							<span translate>Double spent attempt detected. From tx:</span> 
+						<div ng-if="vin.doubleSpentTxID" class="text-danger">
+							<span class="glyphicon glyphicon-warning-sign"></span>
+							<span translate>Double spent attempt detected. From tx:</span>
 							<a href="tx/{{ vin.doubleSpentTxID }}">
 								{{ vin.doubleSpentTxID }},
 								{{ vin.doubleSpentIndex }}
@@ -72,8 +72,8 @@
 
 						<!-- === -->
 
-						<div class="data" 
-							ng-class="{ 'attn' : $root.currentAddr === vin.addr }" 
+						<div class="data"
+							ng-class="{ 'attn' : $root.currentAddr === vin.addr }"
 							ng-if="vin.addr">
 							{{ $root.currency.getConvertion(tx.showAdditInfo ? item.value : vin.value) }}
 						</div>
@@ -93,9 +93,9 @@
 							</div>
 							<div class="labeled" ng-repeat="scriptSigAsm in vin.scriptSig.asm | split:' '">
 								<div class="copyParent copyParent-right">
-									<a href="" 
+									<a href=""
 									class="copyBtn icon-copy"
-									ngclipboard 
+									ngclipboard
 									data-clipboard-text="{{ scriptSigAsm }}">
 									</a>
 									<span class="copyText">
@@ -125,15 +125,15 @@
 				<div ng-repeat="item in vout.items | limitTo : !tx.showAdditInfo ? 1 : vout.items.length">
 					<div class="transactions__row">
 
-						<a href="address/{{ vout.addr }}" 
-						class="name mark" 
+						<a href="address/{{ vout.addr }}"
+						class="name mark"
 						ng-if="!vout.notAddr && ($root.currentAddr !== vout.addr || tx.showAdditInfo)">
 							<span class="name__text">
 								{{ vout.addr }}
 							</span>
 						</a>
 						<a href="address/{{ vout.contractAddress }}?contract=1"
-						class="name mark" 
+						class="name mark"
 						ng-if="vout.notAddr && vout.contractAddress && ($root.currentAddr !== vout.addr || tx.showAdditInfo)">
 							<span class="name__text">
 								{{ vout.contractAddress }}
@@ -144,7 +144,7 @@
 						</span>
 
 						<div class="data" ng-class="{ 'special' : vout.value && !tx.showAdditInfo }">
-							{{ !tx.showAdditInfo ? $root.currency.getConvertion(vout.value) : $root.currency.getConvertion(item.value) }} 
+							{{ !tx.showAdditInfo ? $root.currency.getConvertion(vout.value) : $root.currency.getConvertion(item.value) }}
 							<span class="special" ng-if="vout.isSpent">(S)</span>
 							<span class="special" ng-if="!vout.isSpent">(U)</span>
 						</div>
@@ -164,9 +164,9 @@
 							</div>
 							<div class="labeled" ng-if="item.scriptPubKey.asm">
 								<div class=" copyParent copyParent-right">
-									<a href="" 
+									<a href=""
 									class="copyBtn icon-copy"
-									ngclipboard 
+									ngclipboard
 									data-clipboard-text="{{ item.scriptPubKey.asm }}">
 									</a>
 									<span class="copyText">
@@ -187,7 +187,7 @@
 					<a href="token/{{ ev.contractInfo.contract_address }}">
 						{{ ev.contractInfo.name ? ev.contractInfo.name : 'Standard token' }}
 					</a>
-					<span class="special2">(QRC20)</span>
+					<span class="special2">(HRC20)</span>
 				</span>
 			</div>
 		</div>
@@ -230,8 +230,8 @@
 	<div class="transactions__contractBody">
 		<div class="transactions__contractItem">
 			<div class="transactions__contractItemTitle" translate>Contract Code</div>
-			<div class="transactions__contractItemBody " 
-				 ng-scrollbars 
+			<div class="transactions__contractItemBody "
+				 ng-scrollbars
 				 ng-scrollbars-config="TC.scrollConfig">
 				<div class="list">
 					{{ tx.contractBytecode }}
@@ -240,8 +240,8 @@
 		</div>
 		<div class="transactions__contractItem">
 			<div class="transactions__contractItemTitle" translate>Asm</div>
-			<div class="transactions__contractItemBody" 
-				 ng-scrollbars 
+			<div class="transactions__contractItemBody"
+				 ng-scrollbars
 				 ng-scrollbars-config="TC.scrollConfig">
 				<div class="list">
 					{{ tx.contractAsm }}
@@ -253,22 +253,22 @@
 <div class="transactions__row">
 	<div class="pull-left" ng-if="!tx.isCoinBase && tx.fees >= 0">
 		<div class="transactions__info transp">
-			<span translate>Fee</span>: 
-			{{ $root.currency.getConvertion(tx.fees) }} 
+			<span translate>Fee</span>:
+			{{ $root.currency.getConvertion(tx.fees) }}
 			{{ CC.currency.symbol }}
 		</div>
 	</div>
-	<div class="pull-right text_r" 
-		 ng-class="{ 
-			'pull-right' : !tx.isCoinBase && Number(tx.fees) >= 0 && tx.contractBytecode, 
+	<div class="pull-right text_r"
+		 ng-class="{
+			'pull-right' : !tx.isCoinBase && Number(tx.fees) >= 0 && tx.contractBytecode,
 			'transactions__row' : tx.isCoinBase && Number(tx.fees) < 0 && !tx.contractBytecode
 		}">
-		<div ng-if="!tx.confirmations" 
+		<div ng-if="!tx.confirmations"
 			  class="transactions__info error" translate>
 			  Unconfirmed Transaction!
 		</div>
 		<div class="transactions__info" ng-if="tx.confirmations">
-			{{ tx.confirmations }} 
+			{{ tx.confirmations }}
 			{{ 'confirmations' | translate }}
 		</div>
 		<div class="transactions__info">
