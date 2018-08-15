@@ -8,9 +8,9 @@
 	<div class="heading__sm">
 		<div class="heading__smLabeled">
 			<div class=" copyParent copyParent-right">
-				<a href="" 
+				<a href=""
 				   class="copyBtn icon-copy"
-				   ngclipboard 
+				   ngclipboard
 				   data-clipboard-text="{{ InnerContr.contractAddress ? InnerContr.contractAddress : InnerContr.address.addrStr }}"></a>
 				<div class="copyText text">
 					{{ InnerContr.contractAddress ? InnerContr.contractAddress : InnerContr.address.addrStr }}
@@ -72,7 +72,7 @@
 				</li>
 				<li class="list__item" ng-if="InnerContr.erc20ContractInfo">
 					<div class="list__left">
-						<b>QRC 20 Token</b>
+						<b>HRC 20 Token</b>
 					</div>
 					<div class="list__right">
 						<div class="">
@@ -109,9 +109,9 @@
 		</div>
 		<div class="col col-5">
 			<a href='' class="qr__link">
-				<qrcode color="{{ InnerContr.qrColors.color }}" 
+				<qrcode color="{{ InnerContr.qrColors.color }}"
 						background="{{ InnerContr.qrColors.background }}"
-						size="130" 
+						size="130"
 						data="{{ 'html:' + InnerContr.address.addrStr }}?label=HTMLCOIN Mobile Wallet">
 				</qrcode>
 			</a>
@@ -121,8 +121,8 @@
 
 <div class="transactions__contractItem" ng-if="InnerContr.info.code">
 	<div class="transactions__contractItemTitle" translate>Bytecode</div>
-	<div class="transactions__contractItemBody" 
-		 ng-scrollbars 
+	<div class="transactions__contractItemBody"
+		 ng-scrollbars
 		 ng-scrollbars-config="InnerContr.scrollConfig">
 		<div class="list">
 			{{ InnerContr.info.code }}
@@ -132,8 +132,8 @@
 
 <div class="transactions__contractItem" ng-if="InnerContr.opcodesStr">
 	<div class="transactions__contractItemTitle" translate>Asm</div>
-	<div class="transactions__contractItemBody " 
-		 ng-scrollbars 
+	<div class="transactions__contractItemBody "
+		 ng-scrollbars
 		 ng-scrollbars-config="InnerContr.scrollConfig">
 		<div class="list">
 			{{ InnerContr.opcodesStr }}
@@ -141,7 +141,7 @@
 	</div>
 </div>
 
-<div class="section section-storage smartMode" 
+<div class="section section-storage smartMode"
 	 ng-init="InnerContr.getStorage()">
 	<div class="section__heading" ng-if="InnerContr.storage.rows.length">
 		<div class="ov">
@@ -162,7 +162,7 @@
 				<div class="trMain">
 					<div class="td">
 						<div class="storage__tdInFirst ">
-							<a href="" 
+							<a href=""
 							   class="mark-bd"
 							   ng-click="InnerContr.toggleStorageRowView($index, 'keys')">
 								{{ storageRow.keys.state }}
@@ -179,9 +179,9 @@
 									{{ storageRow.keys[ storageRow.keys.state ]}}
 								</a>
 								<div ng-if="storageRow.keys.state === 'data'">
-									<span>{{ storageRow.keys[ storageRow.keys.state ].substr(0, 20) }}</span><span class="attn tooltip__trigger" 
+									<span>{{ storageRow.keys[ storageRow.keys.state ].substr(0, 20) }}</span><span class="attn tooltip__trigger"
 									tooltip
-									tooltip-options="InnerContr.tooltipOptions" 
+									tooltip-options="InnerContr.tooltipOptions"
 									tooltip-title="{{ storageRow.keys[ storageRow.keys.state ]}}"
 									ng-if="storageRow.keys[ storageRow.keys.state ].length > 40">[...]</span><span ng-if="storageRow.keys[ storageRow.keys.state ].length > 40">{{ storageRow.keys[ storageRow.keys.state ].substr(-20) }}</span>
 								</div>
@@ -198,9 +198,9 @@
 									{{ storageRow.values[ storageRow.values.state ]}}
 								</a>
 								<div ng-if="storageRow.values.state === InnerContr.STORAGE_CONST.DATA">
-									<span>{{ storageRow.values[ storageRow.values.state ].substr(0, 20) }}</span><span class="attn tooltip__trigger" 
+									<span>{{ storageRow.values[ storageRow.values.state ].substr(0, 20) }}</span><span class="attn tooltip__trigger"
 									tooltip
-									tooltip-options="InnerContr.tooltipOptions" 
+									tooltip-options="InnerContr.tooltipOptions"
 									tooltip-title="{{ storageRow.values[ storageRow.values.state ]}}"
 									ng-if="storageRow.values[ storageRow.values.state ].length > 40">[...]</span><span ng-if="storageRow.values[ storageRow.values.state ].length > 40">{{ storageRow.values[ storageRow.values.state ].substr(-20) }}</span>
 								</div>
@@ -212,7 +212,7 @@
 					</div>
 					<div class="td">
 						<div class="storage__tdInLast ">
-							<a href="" 
+							<a href=""
 							   class="mark-bd"
 							   ng-click="InnerContr.toggleStorageRowView($index, 'values')">
 								{{ storageRow.values.state }}
@@ -223,14 +223,14 @@
 			</div>
 		</div>
 		<div class="storage__btnWrap">
-			<a href="" 
+			<a href=""
 			   class="storage__btn"
 			   ng-if="InnerContr.storage.storageLength > InnerContr.storage.viewRows"
 			   ng-click="InnerContr.showMoreStorageRows(InnerContr.storage.viewRows + InnerContr.STORAGE_ROWS)"
 			   translate>
 				More
 			</a>
-			<a href="" 
+			<a href=""
 			   class="storage__btn"
 			   ng-if="InnerContr.storage.storageLength > InnerContr.storage.viewRows"
 			   ng-click="InnerContr.showMoreStorageRows(InnerContr.storage.storageLength)"

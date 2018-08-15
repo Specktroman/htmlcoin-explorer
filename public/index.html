@@ -11,17 +11,18 @@
 		<link rel="stylesheet" type="text/css" href="css/style.min.css" />
                 <link rel="shortcut icon" href="images/favicon.png" type="image/png"/>
     <link rel="apple-touch-icon" href="images/favicon.png" type="image/png"/>
-		<!--[if IE ]><link rel="shortcut icon" href="/img/favicon.ico"  type="image/x-icon" /><![endif]--> 
+		<!--[if IE ]><link rel="shortcut icon" href="/img/favicon.ico"  type="image/x-icon" /><![endif]-->
 		<title ng-bind="$root.title + $root.titleDetail + ' | Insight'">Insight</title>
 	</head>
 	<body ng-cloak class="ng-cloak">
 
 		<div class="wrapper wrapper-with-footer">
-			<header class="header fixed" 
+			<header class="header fixed"
 					ng-include
-					src="'views/includes/header.html'" 
+					src="'views/includes/header.html'"
 					role='navigation'
 					ng-controller="HeaderController as HC">
+					<img src="images/htmlcoin_logo.png" alt="" class="logo logoPic-def"/>
 			</header>
 			<section class="content" ng-view ng-controller="CurrencyController as CC">
 			</section>
@@ -33,7 +34,7 @@
 				</div>
 			</div>
 		</footer>
-	
+
 		<script data-cfasync="false">window.apiPrefix = '/api';</script>
 		<script data-cfasync="false">window.socketUrl = null;</script>
 		<script data-cfasync="false">window.current_network = null;</script>
