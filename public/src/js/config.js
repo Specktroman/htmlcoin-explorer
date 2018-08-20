@@ -94,15 +94,10 @@ angular.module('insight').config(function($routeProvider) {
 		templateUrl: 'views/token/token.html',
 		title: 'Token'
 	}).
-    when('/e404', {
-        templateUrl: 'views/404.html',
-        title: 'Error'
-    }).
-    when('/rich-list', {
-        controller: 'RichListController',
-        templateUrl: 'views/rich_list.html',
-        title: 'Rich List'
-    }).
+        when('/e404', {
+                templateUrl: 'views/404.html',
+                title: 'Error'
+        }).
 	otherwise({
 		templateUrl: 'views/404.html',
 		title: 'Error'

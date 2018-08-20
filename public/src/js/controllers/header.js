@@ -44,11 +44,6 @@ function($scope, $rootScope, $route, gettextCatalog, amMoment, getSocket, Block,
                 'title': gettextCatalog.getString('Tokens'),
                 'link': 'tokens/search',
                 'active_part': '/token'
-            },
-            {
-                'title': gettextCatalog.getString('Rich List'),
-                'link': 'rich-list',
-                'active_part': '/rich-list'
             }
         ];
 	}
