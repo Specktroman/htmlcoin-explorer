@@ -340,6 +340,7 @@ sub {
     display: inline-block;
     vertical-align: middle; }
 
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/iconmoon/icomoon.eot?s0z324");
@@ -757,6 +758,11 @@ b, strong {
   font-size: 40px;
   font-weight: 500; }
 
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
 .mark {
   background: rgba(44, 130, 174, 0.8);
   color: #232328;
@@ -770,6 +776,7 @@ b, strong {
   .mark.disabled {
     background: rgba(44, 130, 174, 0.5);
     cursor: default; }
+
 
 .mark-bd {
   display: inline-block;

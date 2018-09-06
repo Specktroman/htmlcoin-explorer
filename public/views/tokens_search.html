@@ -39,29 +39,32 @@
             <button class="btn btn-transp btn-h-lg" ng-click="TSC.reset()">Reset</button>
         </div>
     </div>
-    <section class="section section-tokenSearchTable">
-        <div class="table">
-            <div class="tr tr-head">
-                <div class="th">Token Information</div>
-                <div class="th">Total supply</div>
-                <div class="th">Token Holders</div>
-                <div class="th">Contract Address</div>
-            </div>
-            <div class="tr" ng-repeat="contract in TSC.contractsList">
-                <div class="td">
-                    <div class="">
-                        <a href="/token/{{ contract.contract_address }}" class="ellipsis mark title">{{ contract.symbol }} {{ contract.name ? ((contract.symbol ? '- ' : '') + contract.name) : '' }}</a>
-                    </div>
-                    <div ng-if="contract.description" class="descr muted">
-                        {{ contract.description }}
-                    </div>
-                </div>
-                <div class="td">{{ $root.token.convertDecimals(contract.total_supply, contract.decimals) }}</div>
-                <div class="td">{{ contract.count_holders | numeraljs : '0,0[.][00000000]' }}</div>
-                <div class="td">
-                    <a href="/address/{{ contract.contract_address }}" class="ellipsis mark">{{ contract.contract_address }}</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+        		<section class="section section-tokenSearchTable">
+    		        <div class="table">
+    		            <div class="tr tr-head">
+    		                <div class="th">Token Information</div>
+    		                <div class="th">Total supply</div>
+    		                <div class="th">Token Holders</div>
+    		                <div class="th">Contract Address</div>
+    		            </div>
+    		            <div class="tr" ng-repeat="contract in TSC.contractsList">
+    		                <div class="td">
+    		                    <div class="">
+    		                    	<a ng-if="contract.symbol === 'HTML' || contract.symbol === 'SVN' || contract.symbol === 'HTMT'" href="/token/{{ contract.contract_address }}" class="ellipsis mark title strikethrough">{{ contract.symbol }} {{ contract.name ? ((contract.symbol ? '- ' : '') + contract.name + " [FAKE]" ) : '' }}</a>
+
+									<a ng-if="contract.symbol !== 'HTML' && contract.symbol !== 'SVN' && contract.symbol !== 'HTMT'" href="/token/{{ contract.contract_address }}" class="ellipsis mark title">{{ contract.symbol }} {{ contract.name ? ((contract.symbol ? '- ' : '') + contract.name ) : '' }}</a>
+    		                    		
+    		                    </div>
+    		                    <div ng-if="contract.description" class="descr muted">
+    		                        {{ contract.description }}
+    		                    </div>
+    		                </div>
+    		                <div class="td">{{ $root.token.convertDecimals(contract.total_supply, contract.decimals) }}</div>
+    		                <div class="td">{{ contract.count_holders | numeraljs : '0,0[.][00000000]' }}</div>
+    		                <div class="td">
+    		                    <a href="/address/{{ contract.contract_address }}" class="ellipsis mark">{{ contract.contract_address }}</a>
+    		                </div>
+    		            </div>
+    		        </div>
+    		    </section>
+ </div>
