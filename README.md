@@ -10,7 +10,7 @@ nvm use v6
 ```
 
 ```
-npm install git//github.com/HTMLCOIN/htmlcoincore-node.git#master
+npm install git://github.com/HTMLCOIN/htmlcoincore-node.git#master
 cd htmlcoincore-node
 ./bin/htmlcoincore-node create explorer
 cd explorer 
