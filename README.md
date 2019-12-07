@@ -1,50 +1,44 @@
 # Explorer
-
 A HTMLCOIN blockchain explorer web application service for [HTMLCOINCORE Node](https://github.com/HTMLCOIN/htmlcoincore-node) using the [HTMLCOIN API](https://github.com/HTMLCOIN/htmlcoin-api).
 
+NPM 3.10.10 used in example below.
 
 ## Install via SSH
-
 ```
-nvm use v6
-```
-
-```
-npm install git://github.com/HTMLCOIN/htmlcoincore-node.git#master
+git clone https://github.com/HTMLCOIN/htmlcoincore-node.git#master
 cd htmlcoincore-node
+npm install
 ./bin/htmlcoincore-node create explorer
 cd explorer 
 ../bin/htmlcoincore-node install htmlcoin-api
 ../bin/htmlcoincore-node install htmlcoin-explorer
 
 ```
-
 Edit htmlcoincore-node.json:
 ```
 {
   "network": "livenet",
-  "port": 3001,
+  "port": 8000,
   "services": [
-    "htmlcoind",
     "htmlcoin-api",
     "htmlcoin-explorer",
+    "htmlcoind",
     "web"
   ],
   "servicesConfig": {
     "htmlcoin-explorer": {
-      "apiPrefix": "htmlcoin-api",
-      "routePrefix": "htmlcoin-explorer",
-	  "nodemapLink": "http://explorer.htmlcoin.com/en/nodemap"
+      "apiPrefix": "api",
+      "routePrefix": ""
+    },
+    "htmlcoind": {
+      "spawn": {
+        "datadir": "/home/explorer/.htmlcoin/",
+        "exec": "/home/explorer/htmlcoincore-node/bin/htmlcoind"
+      }
     },
     "htmlcoin-api": {
-      "routePrefix": "htmlcoin-api",
-      "rateLimiterOptions": {
-        "whitelist": ["123.456.12.34", "::ffff:123.456.12.34"],
-        "whitelistLimit": 9999999,
-        "limit": 200,
-        "interval": 60000,
-        "banInterval": 3600000
-      },
+      "disableRateLimiter": "true",
+      "routePrefix": "api",
       "db": {
         "host": "127.0.0.1",
         "port": "27017",
@@ -55,17 +49,11 @@ Edit htmlcoincore-node.json:
       "erc20": {
         "updateFromBlockHeight": 0
       }
-    },
-    "htmlcoind": {
-      "spawn": {
-        "datadir": "/home/user/.htmlcoin",
-        "exec": "/home/user/htmlcoincore-node/bin/htmlcoind"
-      }
     }
   }
 }
-```
 
+```
 Edit htmlcoin.conf:
 ```
 server=1
@@ -77,8 +65,8 @@ spentindex=1
 zmqpubrawtx=tcp://127.0.0.1:28332
 zmqpubhashblock=tcp://127.0.0.1:28332
 rpcallowip=127.0.0.1
-rpcuser=user
-rpcpassword=password
+rpcuser=htmlcoin
+rpcpassword=htmlcoinpassword
 rpcport=18332
 reindex=1
 gen=0
@@ -86,10 +74,10 @@ addrindex=1
 logevents=1
 ```
 
+Run the explorer with.
 ```
-$(npm bin)/htmlcoincore-node start
+../bin/htmlcoincore-node start
 ```
-
 
 ## Getting Started
 
@@ -104,7 +92,7 @@ htmlcoincore-node install htmlcoin-explorer
 htmlcoincore-node start
 ```
 
-Open a web browser to `http://localhost:3001/htmlcoin-explorer`
+Open a web browser to `http://localhost:8000/`
 
 ## Development
 
